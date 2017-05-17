@@ -1,7 +1,8 @@
 package pl.edu.agh.morphology;
 
+import pl.edu.agh.binary.BinaryColor;
 import pl.edu.agh.image.Image;
-import pl.edu.agh.interfaces.Transformation;
+import pl.edu.agh.morphology.interfaces.Transformation;
 import pl.edu.agh.util.ImageUtils;
 
 import static pl.edu.agh.util.ImageUtils.saveOutput;
@@ -12,20 +13,20 @@ import static pl.edu.agh.util.ImageUtils.saveOutput;
 public class BinaryDilateTransformation implements Transformation {
 
     private int radius;
-    private int foregroundColor;
+    private BinaryColor foregroundColor;
 
-    public BinaryDilateTransformation(int radius, int foregroundColor) {
+    public BinaryDilateTransformation(int radius, BinaryColor foregroundColor) {
         this.radius = radius;
         this.foregroundColor = foregroundColor;
     }
 
     @Override
-    public void transform(Image image) {
+    public void process(Image image) {
         int imageWidth = image.getWidth();
         int imageHeight = image.getHeight();
         int output[] = new int[image.getWidth() * image.getHeight()];
 
-        int actualValue = foregroundColor;  //BLACK - 0, WHITE - 255
+        int actualValue = foregroundColor.getValue();  //BLACK - 0, WHITE - 255
         int reverseValue = (actualValue == 255) ? 0 : 255;
 
         for(int y = 0; y < imageHeight; y++){

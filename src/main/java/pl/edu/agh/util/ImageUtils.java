@@ -1,6 +1,7 @@
 package pl.edu.agh.util;
 
 import pl.edu.agh.image.Image;
+import pl.edu.agh.image.ImageImpl;
 
 /**
  * Created by Kamil Jureczka on 2017-05-10.
@@ -30,5 +31,9 @@ public class ImageUtils {
 
     public static boolean isPixelInsideImage(int x, int y, Image image) {
         return y >= 0 && y < image.getHeight() && x >= 0 && x < image.getWidth();
+    }
+
+    public static Image copyOf(Image image) {
+        return new ImageImpl(image);
     }
 }

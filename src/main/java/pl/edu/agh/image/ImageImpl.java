@@ -20,6 +20,18 @@ public class ImageImpl implements Image {
         initPixels();
     }
 
+    public ImageImpl(Image image){
+        this.pixels = new int[image.getWidth()*image.getHeight()];
+        this.image = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
+
+        for(int y = 0; y < image.getHeight(); y++){
+            for(int x = 0; x < image.getWidth(); x++){
+                this.image.setRGB(x, y, image.getPixel(x, y));
+                this.pixels[x+y*image.getWidth()] = image.getPixel(x, y);
+            }
+        }
+    }
+
     private void initPixels(){
         PixelGrabber pg = new PixelGrabber(image, 0, 0, image.getWidth(), image.getHeight(), pixels, 0, image.getWidth());
         try{

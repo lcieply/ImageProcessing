@@ -1,7 +1,7 @@
 package pl.edu.agh.morphology;
 
 import pl.edu.agh.image.Image;
-import pl.edu.agh.interfaces.Transformation;
+import pl.edu.agh.morphology.interfaces.Transformation;
 
 /**
  * Created by Kamil on 2017-05-15.
@@ -15,11 +15,11 @@ public class GrayscaleCloseMorphologyTransformation implements Transformation {
     }
 
     @Override
-    public void transform(Image image) {
+    public void process(Image image) {
         Transformation transformation = new GrayscaleDilateTransformation(radius);
-        transformation.transform(image);
+        transformation.process(image);
 
         transformation = new GrayscaleErodeTransformation(radius);
-        transformation.transform(image);
+        transformation.process(image);
     }
 }

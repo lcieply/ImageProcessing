@@ -1,7 +1,7 @@
 package pl.edu.agh.morphology;
 
 import pl.edu.agh.image.Image;
-import pl.edu.agh.interfaces.Transformation;
+import pl.edu.agh.morphology.interfaces.Transformation;
 import pl.edu.agh.util.ImageUtils;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class GrayscaleDilateTransformation implements Transformation {
     }
 
     @Override
-    public void transform(Image image) {
+    public void process(Image image) {
         int imageWidth = image.getWidth();
         int imageHeight = image.getHeight();
 

@@ -1,7 +1,7 @@
 package pl.edu.agh.morphology;
 
 import pl.edu.agh.image.Image;
-import pl.edu.agh.interfaces.Transformation;
+import pl.edu.agh.morphology.interfaces.Transformation;
 import pl.edu.agh.util.ImageUtils;
 
 import java.util.Arrays;
@@ -14,19 +14,13 @@ import static pl.edu.agh.util.ImageUtils.saveOutput;
 public class GrayscaleErodeTransformation implements Transformation {
 
     private int radius;
-    private int foregroundColor;
 
     public GrayscaleErodeTransformation(int radius) {
         this.radius = radius;
     }
 
-    public GrayscaleErodeTransformation(int radius, int foregroundColor) {
-        this.radius = radius;
-        this.foregroundColor = foregroundColor;
-    }
-
     @Override
-    public void transform(Image image) {
+    public void process(Image image) {
         int imageWidth = image.getWidth();
         int imageHeight = image.getHeight();
 

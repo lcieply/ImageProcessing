@@ -115,6 +115,36 @@ public class ExampleMain {
         convexHullTransformation.process(tmpConvexHullImage);
         tmpConvexHullImage.writeImage(getOutputDirectory(convexPath, ""));
 
+        //================GRAYSCALE=======================
+        Filter grayscaleTransformation = new GrayscaleFilter();
+        Image tmpRgbImage_Gray = ImageUtils.copyOf(rgbImage);
+        grayscaleTransformation.process(tmpRgbImage_Gray);
+        tmpRgbImage_Gray.writeImage(getOutputDirectory(rgbPath, "grayscaleFilter"));
+
+        //================SEPIA=======================
+        Filter sepiaTransformation = new SepiaFilter();
+        Image tmpRgbImage_Sepia = ImageUtils.copyOf(rgbImage);
+        sepiaTransformation.process(tmpRgbImage_Sepia);
+        tmpRgbImage_Sepia.writeImage(getOutputDirectory(rgbPath, "sepiaFilter"));
+
+        //================RGB_TO_CMY=======================
+        Filter rgbToCmyFilter = new RGB_CMY_Filter();
+        Image tmpRgbImage_CMY = ImageUtils.copyOf(rgbImage);
+        rgbToCmyFilter.process(tmpRgbImage_CMY);
+        tmpRgbImage_CMY.writeImage(getOutputDirectory(rgbPath, "CMY"));
+
+        //================RGB_TO_HSV=======================
+        Filter pastelFilter = new PastelFilter();
+        Image tmpRgbImage_HSV = ImageUtils.copyOf(rgbImage);
+        pastelFilter.process(tmpRgbImage_HSV);
+        tmpRgbImage_HSV.writeImage(getOutputDirectory(rgbPath, "Pastel"));
+
+        //================Thresholding=======================
+        Filter treshHoldingFilter = new ThresholdingFilter(135);
+        Image tmpRgbImageThres = ImageUtils.copyOf(rgbImage);
+        treshHoldingFilter.process(tmpRgbImageThres);
+        tmpRgbImageThres.writeImage(getOutputDirectory(rgbPath, "thresholding"));
+
     }
 
     private static String getOutputDirectory(String inputDirectory, String additionalInfo) {

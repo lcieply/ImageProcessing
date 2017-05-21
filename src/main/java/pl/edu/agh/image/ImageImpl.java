@@ -2,9 +2,7 @@ package pl.edu.agh.image;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
 import java.awt.image.PixelGrabber;
-import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 
@@ -13,7 +11,7 @@ import java.io.IOException;
  */
 public class ImageImpl implements Image {
 
-    public BufferedImage image;
+    private BufferedImage image;
     private int pixels[];
 
     public ImageImpl(String fileName) throws IOException {

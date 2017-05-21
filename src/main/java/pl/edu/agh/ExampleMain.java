@@ -9,7 +9,6 @@ import pl.edu.agh.morphology.*;
 import pl.edu.agh.morphology.interfaces.Transformation;
 import pl.edu.agh.util.ImageUtils;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Arrays;
 

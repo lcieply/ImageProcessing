@@ -2,7 +2,9 @@ package pl.edu.agh.image;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
 import java.awt.image.PixelGrabber;
+import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 
@@ -11,7 +13,7 @@ import java.io.IOException;
  */
 public class ImageImpl implements Image {
 
-    private BufferedImage image;
+    public BufferedImage image;
     private int pixels[];
 
     public ImageImpl(String fileName) throws IOException {
@@ -19,7 +21,17 @@ public class ImageImpl implements Image {
         this.pixels = new int[image.getWidth()*image.getHeight()];
         initPixels();
     }
+    public ImageImpl(BufferedImage image){
+        this.pixels = new int[image.getWidth()*image.getHeight()];
+        this.image = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
 
+        for(int y = 0; y < image.getHeight(); y++){
+            for(int x = 0; x < image.getWidth(); x++){
+                this.image.setRGB(x, y, image.getRGB(x ,y));
+                this.pixels[x+y*image.getWidth()] = image.getRGB(x, y);
+            }
+        }
+    }
     public ImageImpl(Image image){
         this.pixels = new int[image.getWidth()*image.getHeight()];
         this.image = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -104,5 +116,9 @@ public class ImageImpl implements Image {
         File file = new File(filePath);
         String fileType = filePath.substring(filePath.lastIndexOf('.')+1);
         ImageIO.write(image, fileType, file);
+    }
+    @Override
+    public void setImage(BufferedImage image){
+        this.image = image;
     }
 }

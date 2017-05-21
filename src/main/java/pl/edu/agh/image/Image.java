@@ -1,5 +1,6 @@
 package pl.edu.agh.image;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -17,4 +18,5 @@ public interface Image {
     int getGreenPixel(int x, int y);
     int getBluePixel(int x, int y);
     void writeImage(String filePath) throws IOException;
+    void setImage(BufferedImage image);
 }
